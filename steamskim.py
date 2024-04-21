@@ -11,10 +11,10 @@ def extract_mod_id(url):
         
         if mod_id_element:
             mod_id_html = mod_id_element.prettify()
-            # Find Mod ID pattern with newline characters or <br/> tags
+            #Find Mod ID pattern with newline characters or <br/> tags
             mod_id_match = re.search(r'Mod\s*ID\s*:\s*([^<\n]+)', mod_id_html, re.IGNORECASE)
             if mod_id_match:
-                # Extract the mod_id from the match
+                #Extract the mod_id from the match
                 mod_id = mod_id_match.group(1).strip()
                 return mod_id
             else:
@@ -51,14 +51,21 @@ def extract_all_hrefs(url):
                 for a_tag in all_a_tags:
                     href = a_tag.get('href')
                     if href and "sharedfiles" in href and href not in hrefs:
-                        hrefs.add(href)  # Add href to set if not already present
-                return list(hrefs)  # Convert set back to list before returning
+                        #Add href to set if not already present
+                        hrefs.add(href)  
+                #Convert set back to list before returning        
+                return list(hrefs)  
         else:
             print("Failed to fetch URL:", url)
     except Exception as e:
         print("An error occurred:", e)
 
 def main():
+    """
+    This function prompts the user for a collection URL, fetches all the hyperlinks from the URL,
+    extracts mod IDs and workshop IDs from the links, and writes new IDs to a file if they are not already present.
+    It also calculates and prints the execution time of the function.
+    """
     start_time = time.time()
     collection_url = input("Enter the collection URL: ")
     try:
