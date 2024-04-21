@@ -16,7 +16,6 @@ def extract_mod_id(url):
             if mod_id_match:
                 # Extract the mod_id from the match
                 mod_id = mod_id_match.group(1).strip()
-                print(mod_id)
                 return mod_id
             else:
                 return None
@@ -61,7 +60,7 @@ def extract_all_hrefs(url):
 
 def main():
     start_time = time.time()
-    collection_url = "https://steamcommunity.com/sharedfiles/filedetails?id=3228810792"
+    collection_url = input("Enter the collection URL: ")
     try:
         links = extract_all_hrefs(collection_url)
     except Exception as e:
