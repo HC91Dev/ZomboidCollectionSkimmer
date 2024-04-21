@@ -1,1 +1,1 @@
-Simply change the collection url to your desired colelction url and run :)
+Simply input the collection url and run :)
